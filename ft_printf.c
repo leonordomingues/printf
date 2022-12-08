@@ -41,22 +41,22 @@ int	ft_printf(const char *str, ...)
 	return (counter);
 }
 
-// int	main()
-// {
-// 	int j = ft_printf("s: %s, numb: %d, hex: %x\n", "certo", 2345678, 34445);
-// 	// ft_printf("%%c: %c\n", '7');
-// 	// ft_printf("p: %p\n", i);
-// 	// ft_printf("d: %d\n", 5);
-// 	//int j =  ft_printf("u: %u\n", 23456789);
-// 	//int j = ft_printf("x: %x\n", 34445);
-// 	// ft_printf("X: %X\n", 56);
+int	main()
+{
+	//int j = ft_printf("s: %s, numb: %d, hex: %x\n", "certo", 2345678, 34445);
+	// ft_printf("%%c: %c\n", '7');
+	// ft_printf("p: %p\n", i);
+	// ft_printf("d: %d\n", 5);
+	int j =  ft_printf("u: %u\n", LONG_MAX);
+	//int j = ft_printf("x: %x\n", 34445);
+	// ft_printf("X: %X\n", 56);
 
-//     int w = printf("s: %s, numb: %d, hex: %x\n", "certo", 2345678, 34445);
-// 	// printf("%%c: %c\n", '7');
-//     // printf("p: %p\n", i);
-//     // printf("d: %d\n", 5);
-//     //int w = printf("u: %u\n", 23456789);
-// 	//printf("x: %x\n", 34445);
-//     // printf("X: %X\n", 56);
-// 	printf("original: %d\nmeu: %d\n", w, j);
-// }
+    //int w = printf("s: %s, numb: %d, hex: %x\n", "certo", 2345678, 34445);
+	// printf("%%c: %c\n", '7');
+    // printf("p: %p\n", i);
+    // printf("d: %d\n", 5);
+    int w = printf("u: %u\n", LONG_MAX);
+	//printf("x: %x\n", 34445);
+    // printf("X: %X\n", 56);
+	printf("original: %d\nmeu: %d\n", w, j);
+}
