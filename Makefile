@@ -1,7 +1,7 @@
 #target: dependencies
 #		action
 
-SRCS		= *.c
+SRCS		= $(wildcard *.c)
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -11,12 +11,12 @@ RM		= rm -f
 
 FLAGS		= -Wall -Wextra -Werror
 
-NAME		= libft.a
+NAME		= libftprintf.a
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			ar rcs $(NAME)
+			ar rcs $(NAME) $(OBJS)
 
 clean:
 			$(RM) $(OBJS)
@@ -26,4 +26,4 @@ fclean:		clean
 
 re:		fclean $(NAME)
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re

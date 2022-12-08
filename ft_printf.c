@@ -1,23 +1,23 @@
 #include "printf.h"
 
-void	check_flag(char c, va_list list)
+void	check_flag(char c, va_list list, int *counter)
 {
 	if (c == 'c')
-		ft_putchar((char) va_arg(list, int));
+		*counter += ft_putchar((char) va_arg(list, int));
 	else if (c == 's')
-		ft_putstr(va_arg(list, char *));
+		*counter += ft_putstr(va_arg(list, char *));
 	else if (c == 'p')
-		ft_pointer_adress(va_arg(list, size_t), "0123456789abcdef");
+		ft_pointer_adress(va_arg(list, size_t), "0123456789abcdef", counter);
 	else if (c == 'd' || c == 'i')
-		ft_putnbr(va_arg(list, int));
+		ft_putnbr(va_arg(list, int), counter);
 	else if (c == 'u')
-		ft_putnbr_unsigned(va_arg(list, size_t), "0123456789");
+		ft_putnbr_unsigned(va_arg(list, size_t), "0123456789", counter);
 	else if (c == 'x')
-		ft_hexa(va_arg(list, size_t), "0123456789abcdef");
+		ft_hexa(va_arg(list, size_t), "0123456789abcdef", counter);
 	else if (c == 'X')
-		ft_hexa(va_arg(list, size_t), "0123456789ABCDEF");
+		ft_hexa(va_arg(list, size_t), "0123456789ABCDEF", counter);
 	else if (c == '%')
-		ft_putchar(c);
+		*counter += ft_putchar(c);
 }
 
 int	ft_printf(const char *str, ...)
@@ -32,35 +32,31 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-		{
-			check_flag(str[++i], list);
-			counter--;
-		}
+			check_flag(str[++i], list, &counter);
 		else
-			write (1, &str[i], 1);
+			counter += write (1, &str[i], 1);
 		i++;
 	}
-	counter += i;
 	va_end(list);
-	return (i);
+	return (counter);
 }
 
-/*int	main()
-{
-	char	*i;
-	ft_printf("%%c: %c\n", '7');
-	ft_printf("s: %s\n", "certo");
-	ft_printf("p: %p\n", i);
-	ft_printf("d: %d\n", 5);
-	ft_printf("u: %u\n", 23456789);
-	ft_printf("x: %x\n", 34);
-	ft_printf("X: %X\n", 56);
+// int	main()
+// {
+// 	int j = ft_printf("s: %s, numb: %d, hex: %x\n", "certo", 2345678, 34445);
+// 	// ft_printf("%%c: %c\n", '7');
+// 	// ft_printf("p: %p\n", i);
+// 	// ft_printf("d: %d\n", 5);
+// 	//int j =  ft_printf("u: %u\n", 23456789);
+// 	//int j = ft_printf("x: %x\n", 34445);
+// 	// ft_printf("X: %X\n", 56);
 
-	printf("%%c: %c\n", '7');
-        printf("s: %s\n", "certo");
-        printf("p: %p\n", i);
-        printf("d: %d\n", 5);
-        printf("u: %u\n", 23456789);
-        printf("x: %x\n", 34);
-        printf("X: %X\n", 56);
-}*/
+//     int w = printf("s: %s, numb: %d, hex: %x\n", "certo", 2345678, 34445);
+// 	// printf("%%c: %c\n", '7');
+//     // printf("p: %p\n", i);
+//     // printf("d: %d\n", 5);
+//     //int w = printf("u: %u\n", 23456789);
+// 	//printf("x: %x\n", 34445);
+//     // printf("X: %X\n", 56);
+// 	printf("original: %d\nmeu: %d\n", w, j);
+// }
