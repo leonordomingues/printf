@@ -7,11 +7,11 @@ void	check_flag(char c, va_list list, int *counter)
 	else if (c == 's')
 		*counter += ft_putstr(va_arg(list, char *));
 	else if (c == 'p')
-		ft_pointer_adress(va_arg(list, unsigned), "0123456789abcdef", counter);
+		ft_pointer_adress(va_arg(list, unsigned long), "0123456789abcdef", counter);
 	else if (c == 'd' || c == 'i')
 		ft_putnbr(va_arg(list, int), counter);
 	else if (c == 'u')
-		ft_putnbr_unsigned(va_arg(list, long long), "0123456789", counter);
+		ft_putnbr_unsigned(va_arg(list, unsigned), "0123456789", counter);
 	else if (c == 'x')
 		ft_hexa(va_arg(list, unsigned), "0123456789abcdef", counter);
 	else if (c == 'X')
