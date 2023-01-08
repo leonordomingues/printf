@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lda-cunh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/08 18:23:46 by lda-cunh          #+#    #+#             */
+/*   Updated: 2023/01/08 18:31:28 by lda-cunh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	check_flag(char c, va_list list, int *counter)
@@ -7,7 +19,8 @@ void	check_flag(char c, va_list list, int *counter)
 	else if (c == 's')
 		*counter += ft_putstr(va_arg(list, char *));
 	else if (c == 'p')
-		ft_pointer_adress(va_arg(list, unsigned long), "0123456789abcdef", counter);
+		ft_pointer_adress(va_arg(list, unsigned long), \
+			"0123456789abcdef", counter);
 	else if (c == 'd' || c == 'i')
 		ft_putnbr(va_arg(list, int), counter);
 	else if (c == 'u')
@@ -25,7 +38,7 @@ int	ft_printf(const char *str, ...)
 	va_list	list;
 	int		i;
 	int		counter;
-	
+
 	i = 0;
 	counter = 0;
 	va_start(list, str);
